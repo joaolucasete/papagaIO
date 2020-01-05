@@ -25,7 +25,7 @@ module.exports = class Suggestion extends Command {
     }
     const resWebhook = await client.executeWebhook(WEBHOOKID, WEBHOOKTOKEN, options)
     const channel = await msg.guild.channels.get(resWebhook.channel_id)
-    channel.addMessageReaction(resWebhook.id, '😝')
-    channel.addMessageReaction(resWebhook.id, '❌')
+    channel.addMessageReaction(resWebhook.id, '⬆️')
+    channel.addMessageReaction(resWebhook.id, '⬇️')
   }
 }
