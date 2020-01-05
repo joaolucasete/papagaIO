@@ -16,16 +16,17 @@ module.exports = class Suggestion extends Command {
 
   async handle({ args, client, msg }, responder) {
     const content = args.suggestion
-    const { WEBHOOKID, WEBHOOKTOKEN } = process.env
+
+    const [WebhookID, WebhookToken] = process.env.WEBHOOKURL.split('/').splice(5)
+
     const options = {
       content,
       wait: true,
       username: `Sugestão ~ ${msg.author.username}`,
       avatarURL: msg.author.dynamicAvatarURL()
     }
-    const resWebhook = await client.executeWebhook(WEBHOOKID, WEBHOOKTOKEN, options)
-    const channel = await msg.guild.channels.get(resWebhook.channel_id)
-    channel.addMessageReaction(resWebhook.id, '⬆️')
-    channel.addMessageReaction(resWebhook.id, '⬇️')
+    const resWebhook = await client.executeWebhook(WebhookID, WebhookToken, options)
+    await msg.guild.channels.get(resWebhook.channel_id)
+      .addMessageReaction(resWebhook.id, '✅')
   }
 }
