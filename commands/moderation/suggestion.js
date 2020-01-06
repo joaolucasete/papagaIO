@@ -7,7 +7,9 @@ module.exports = class Suggestion extends Command {
       aliases: ['sg'],
       group: 'moderation',
       cooldown: 5,
-      options: {},
+      options: {
+        guildOnly: true,
+      },
       usage: [
         { name: 'suggestion', displayName: 'string', type: 'string', optional: false, last: true },
       ]

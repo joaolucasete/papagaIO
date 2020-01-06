@@ -7,7 +7,9 @@ module.exports = class Trustworthy extends Command {
       aliases:['tw'],
       group: 'moderation',
       cooldown: 5,
-      options: {},
+      options: {
+        guildOnly: true,
+      },
       usage: [
         { name: 'member', displayName: 'member', type: 'member', optional: false },
       ]

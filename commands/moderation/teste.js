@@ -6,7 +6,9 @@ module.exports = class Kick extends Command {
       name: 'teste',
       group: 'moderation',
       cooldown: 5,
-      options: {},
+      options: {
+        guildOnly: true,
+      },
       usage: []
     });
   }

@@ -9,35 +9,33 @@ module.exports = class Guild extends Module {
                 guildMemberRemove: "delMember"
             }
         })
+        this.channelID = process.env.WELCOMECHANNEL
     }
     newMember(guild, member) {
-        const embed = new this._client.embed
-        embed
-            .author('Seja muito bem vindo(a)!', guild.dynamicIconURL())
-            .description(`Oii ${member.user.username}, tudo bem ? espero que se divirta conosco mas, 
-            antes de interagir com nossos amigos.`)
-            .thumbnail(member.user.dynamicAvatarURL(null, 512))
-            .color(0x005214)
-            .timestamp()
-
-        guild.channels.get('648193814003187757')
-            .createMessage({ embed })
+        this.sendEmbed(guild, member, 'Seja muito bem vindo(a)!',
+            `Oii ${member.user.username}, tudo bem ? espero que se divirta conosco!`)
 
         this.logger.info(`O membro ${member.user.username} entrou no servidor`)
     }
 
     delMember(guild, member) {
+
+        this.sendEmbed(guild, member, 'Estou muito triste!',
+            `Nosso amigo ${member.user.username} acabou indo embora`)
+
+        this.logger.info(`O membro ${member.user.username} saiu no servidor`)
+    }
+
+    sendEmbed(guild, member, author, description) {
         const embed = new this._client.embed
         embed
-            .author('Estou muito triste!', guild.dynamicIconURL())
-            .description(`Nosso amigo ${member.user.username} acabou indo embora`)
+            .author(author, guild.dynamicIconURL())
+            .description(description)
             .thumbnail(member.user.dynamicAvatarURL(null, 512))
             .color(0x005214)
             .timestamp()
 
-        guild.channels.get('648193814003187757')
+        guild.channels.get(this.channelID)
             .createMessage({ embed })
-
-        this.logger.info(`O membro ${member.user.username} saiu no servidor`)
     }
 }
