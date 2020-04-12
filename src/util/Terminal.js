@@ -21,7 +21,7 @@ class Terminal {
     console.log(this.timestamp + this._name, ...args)
   }
   info (...args) {
-    console.log(this.timestamp, this._name + this.green('CrisRuby') + ' -', ...args)
+    console.log(this.timestamp, this._name + this.green('IO land') + ' -', ...args)
   }
 
   warn (...args) {

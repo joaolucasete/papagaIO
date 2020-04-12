@@ -1,4 +1,4 @@
-const Command = include("src/structures/Command");
+const {Command} = include("src/index");
 
 module.exports = class Suggestion extends Command {
   constructor(...args) {

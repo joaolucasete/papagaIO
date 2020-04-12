@@ -1,7 +1,7 @@
 module.exports = {
-  Sched: require('./Sched'),
-  Commander: require('./Commander'),
+  Sched:       require('./Sched'),
+  Commander:   require('./Commander'),
   Interpreter: require('./Interpreter'),
-  Logger: require('./Logger'),
-  Router: require('./Router')
+  Logger:      require('./Logger'),
+  Router:      require('./Router')
 }

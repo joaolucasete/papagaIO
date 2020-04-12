@@ -1,6 +1,6 @@
 module.exports = {
-  Base: require('./Base'),
+  Base:    require('./Base'),
   Command: require('./Command'),
-  Module: require('./Module'),
+  Module:  require('./Module'),
   Cluster: require('./Cluster')
 }
