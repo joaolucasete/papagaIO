@@ -31,6 +31,7 @@ module.exports = class Verify extends Command {
             .description(message)
             .image('https://i.imgur.com/yXnyFx9.gif')
 
+        msg.member.addRole('697598605183156295').catch(() => { })
         const dm = await msg.author.getDMChannel()
         dm.createMessage({ embed: embedVerify })
     }
